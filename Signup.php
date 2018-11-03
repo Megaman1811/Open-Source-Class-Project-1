@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Search Form</title>
+    <title>Sign up as Guest</title>
 </head>
 
 <body>
@@ -56,6 +56,5 @@ if (!empty($_POST['User'])) {
     $result = mysqli_query($connect, $query);
     if ($result) {
         echo "Entry Successful";
-    }
-    else echo "failed" . mysqli_error($connect);
+    } else echo "failed" . mysqli_error($connect);
 }
