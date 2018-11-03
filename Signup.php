@@ -66,7 +66,7 @@ if (!empty($_POST['User'])) {
     $Address = mysqli_real_escape_string($connect, $Address);
 
     //$query = "insert into guest values('$User','$Pass','$Name','$Cell','$Email','$Address')";
-    $query = "INSERT INTO user_info values (null ,'$Name','$Email','$User','$Pass','$Cell','$Address','O')";
+    $query = "INSERT INTO user_info values (null ,'$Name','$Email','$User','$Pass','$Cell','$Address','0')";
     $result = mysqli_query($connect, $query);
     if ($result) {
         echo "Entry Successful";
