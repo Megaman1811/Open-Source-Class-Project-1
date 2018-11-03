@@ -1,40 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Search Form</title>
 </head>
+
 <body>
 <form method="post">
-    <input type="radio" name="Job1" value="Employee"> Employee
-    <input type="radio" name="Job2" value="Guest"> Guest
-    <br>
-
-    EMP:
-    <br>
-    <input type ="text"  name ="User"/>
-    <br>
-    Pass:
-    <br>
-
-    <input type ="text"  name ="Pass"/>
-    <br>
-    Email:
-    <br>
-    <input type ="text"  name ="Email"/>
-    <br>
-    <input type ="submit" value="Login" name ="Login"/>
-    <input type ="submit" value="Signup" name ="Signup"/>
-
-
+    <p>
+        <input type="radio" name="Job" id="Employee" value="Employee" checked="checked">
+        <label for="Employee">Employee</label>
+        <input type="radio" name="Job" id="Guest" value="Guest">
+        <label for="Guest">Guest</label>
+    </p>
+    <p>
+        <label for="Login">Username:</label>
+        <br>
+        <input type="text" id="Login" name="User" />
+        <br>
+        <label for="Password">Password:</label>
+        <br>
+        <input type="text" id="Password" name="Pass" />
+    </p>
+    <input type="submit" value="Login" name="Login" />
+    <input type="button" onclick="location.href='Signup.php';" value="Guest Signup" />
 
 </form>
 
 </body>
+
 </html>
-
-
-
 
 
 <?php
@@ -47,36 +43,52 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$dbName = "Project";
+$dbName = "proj_db";
 if (!empty($_POST['User'])) {
-    if (isset($_POST['Job1'])) {
-        $EMP = $_POST["User"];
+    if ($_POST['Job'] == "Employee") {
+        $Login = $_POST["User"];
         $Pass = $_POST["Pass"];
-        $Email = $_POST["Email"];
 
         $connect = mysqli_connect($host, $user, $password, $dbName)
         or die("Connection Failed");
 
-        $Query = "Select * from user_info where emp-id = '$EMP' AND password = '$Pass' AND email = '$Email' ";
-        $result = mysqli_query($connect, $Query);
-        if ($result) {
-            echo "Login Complete!";
+        if (isset($_POST['Login'])) {
 
+            $Query = "Select emp_id from user_info WHERE emp_id ='$Login' AND password = '$Pass'";
+            $result = mysqli_query($connect, $Query);
+
+            $row = mysqli_fetch_row($result);
+
+            if (mysqli_num_rows($result) == 1 && $row[0]) {
+                header("Location:Incident.php?Job=Employee");
+
+            } else
+                Echo "Login Failed";
         }
-        else{
-            echo "Login Failed";
-        }
-
-
-    }
-}
-if (isset($_POST['User'])) {
-    if (isset($_POST['Job2'])) {
-        if (isset($_POST['Signup'])) {
-            header('location: Signup.php');
-        }
-
     }
 
+    if ($_POST['Job'] == "Guest") {
+        $Login = $_POST["User"];
+        $Pass = $_POST["Pass"];
+
+        $connect = mysqli_connect($host, $user, $password, $dbName)
+        or die("Connection Failed");
+
+        if (isset($_POST['Login'])) {
+
+            $Query = "Select email from user_info WHERE email ='$Login' AND password = '$Pass'";
+            $result = mysqli_query($connect, $Query);
+            if (mysqli_num_rows($result) == 1) {
+                header("Location:Incident.php?Job=guest");
+
+
+            } else
+                Echo "Login Failed";
+
+        }
+
+    }
+
 
 }
+
