@@ -15,6 +15,11 @@
 
 
 <?php
-if (!isset($_SESSION['Username'])){
-    header('Location:login.php');
+if (!isset($_SESSION['Admin'])){
+    header('Location:restricted.php');
 }
+
+
+?>
+
+

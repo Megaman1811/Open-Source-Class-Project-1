@@ -9,6 +9,7 @@
 
     <body>
     <?php if (isset($_GET['logout']) == 1) echo "You have logged out"; ?>
+    <?php if (isset($_GET['signup']) == 1) echo "You have successfully signed up. Please Log in with your new account"; ?>
     <form method="post">
         <p>
             <input type="radio" name="Job" id="Employee" value="Employee" checked="checked">
