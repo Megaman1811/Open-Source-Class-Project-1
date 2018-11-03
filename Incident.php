@@ -84,6 +84,9 @@ if (!empty($_POST['Category'])) {
 
         $query = "insert into incidentreports values('$ID','$Date','$Urgency','$Location','$Description', '$UserRec','$Category')";
         $result1 = mysqli_query($connect, $query);
+        $Write = fopen('LOG.txt','a');
+        fwrite($Write,$_SESSION['Username']. " ". $Date. "\n");
+        fclose($Write);
         if (!$result1) {
             die('Invalid query: ' . mysqli_error($connect));
         }
