@@ -9,15 +9,6 @@
     Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log out</a>
 
     <form method="post">
-        <label for="Record">User Record</label>
-        <br>
-        <input type="text" id="Record" name="UserRec">
-        <br>
-        <label for="ID">ID</label>
-        <br>
-        <input type="text" id="ID" name="ID"/>
-        <br>
-
         <label for="Urgency">Urgency</label>
         <br>
 
