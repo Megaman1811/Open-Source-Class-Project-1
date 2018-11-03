@@ -52,7 +52,7 @@
  * Time: 2:47 PM
  */
 
-if (!isset($_SESSION['Login'])){
+if (!isset($_SESSION['Username'])) {
     header('Location:restricted.php');
 }
 
@@ -74,9 +74,6 @@ if (!empty($_POST['Category'])) {
 
 
     if ($result) {
-        $ID = $_POST["ID"];
-        $ID = mysqli_real_escape_string($connect, $ID);
-
         $Urgency = $_POST["Urgency"];
         $Urgency = mysqli_real_escape_string($connect, $Urgency);
 
