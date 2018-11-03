@@ -50,15 +50,18 @@ $dbName = "proj_db";
 
 if (!empty($_POST['User'])) {
     if ($_POST['Job'] == "Employee") {
-        $Login = $_POST["User"];
-        $Pass = $_POST["Pass"];
         $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
+        $Login = $_POST["User"];
+        $Login = mysqli_real_escape_string($connect, $Login);
+        $Pass = $_POST["Pass"];
+        $Pass = mysqli_real_escape_string($connect, $Pass);
+       //$connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
         if (isset($_POST['Login'])) {
             $Query = "Select emp_id, admin, name from user_info WHERE emp_id ='$Login' AND password = '$Pass'";
             $result = mysqli_query($connect, $Query);
             $row = mysqli_fetch_row($result);
             if (mysqli_num_rows($result) == 1 && $row[0]) {
-                $_SESSION[`Login`] = $Login;
+                $_SESSION['Login'] = $Login;
                 if ($row[1] == 1) {
                     $_SESSION['Admin'] = true;
                     $_SESSION['Username'] = $row[2];
@@ -78,9 +81,12 @@ if (!empty($_POST['User'])) {
     }
 
     if ($_POST['Job'] == "Guest") {
-        $Login = $_POST["User"];
-        $Pass = $_POST["Pass"];
         $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
+        $Login = $_POST["User"];
+        $Login = mysqli_real_escape_string($connect, $Login);
+        $Pass = $_POST["Pass"];
+        $Pass = mysqli_real_escape_string($connect, $Pass);
+
         if (isset($_POST['Login'])) {
             $Query = "Select email, name from user_info WHERE email ='$Login' AND password = '$Pass'";
             $result = mysqli_query($connect, $Query);
