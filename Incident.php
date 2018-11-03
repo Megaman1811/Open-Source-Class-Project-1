@@ -75,11 +75,6 @@ if (!empty($_POST['Category'])) {
 Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log out</a>
 
 <form method="post">
-    <label for="Description">Description</label>
-    <br>
-    <input type="text" id="Description" name="Des">
-    <br>
-
     <label for="Category">Category</label><br>
     <select id="Category" name="Category">
         <?php
@@ -95,6 +90,14 @@ Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log ou
         ?>
     </select>
     <br>
+    <label for="Description">Description</label>
+    <br>
+    <input type="text" id="Description" name="Des">
+    <br>
+    <label for="Location">Location</label>
+    <br>
+    <input type="text" id="Location" name="Location"/>
+    <br>
     <label for="Urgency">Urgency</label>
     <br>
     <select id="Urgency" name="Urgency">
@@ -103,10 +106,6 @@ Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log ou
         <option value="high">High</option>
         <option value="very high">Very High</option>
     </select>
-    <br>
-    <label for="Location">Location</label>
-    <br>
-    <input type="text" id="Location" name="Location"/>
     <br>
     <input type="submit" value="Submit" name="Submit"/>
 
