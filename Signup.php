@@ -13,12 +13,12 @@
         <input type="text" id="User" name="User"/><br>
         <label for="Pass">Password:</label><br>
         <input type="text" id="Pass" name="Pass"/><br>
+        <label for="Email">Email:</label><br>
+        <input type="text" id="Email" name="Email"><br>
         <label for="Name">Name:</label><br>
         <input type="text" id="Name" name="Name"/><br>
         <label for="Cell">Cellphone #:</label><br>
         <input type="text" id="Cell" name="Cell"/><br>
-        <label for="Email">Email:</label><br>
-        <input type="text" id="Email" name="Email"><br>
         <label for="Address">Address:</label><br>
         <input type="text" id="Address" name="Address"><br>
     </p>
