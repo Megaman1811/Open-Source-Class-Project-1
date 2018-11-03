@@ -52,8 +52,8 @@
  * Time: 2:47 PM
  */
 
-if (!isset($_SESSION['Username'])){
-    header('Location:login.php');
+if (!isset($_SESSION['Login'])){
+    header('Location:restricted.php');
 }
 
 $host = "localhost";
