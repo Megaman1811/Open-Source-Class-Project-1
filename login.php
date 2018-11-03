@@ -80,10 +80,14 @@ if (!empty($_POST['User'])) {
         $Pass = $_POST["Pass"];
         $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
         if (isset($_POST['Login'])) {
-            $Query = "Select email from user_info WHERE email ='$Login' AND password = '$Pass'";
+            $Query = "Select email, name from user_info WHERE email ='$Login' AND password = '$Pass'";
             $result = mysqli_query($connect, $Query);
             if (mysqli_num_rows($result) == 1) {
-                header("Location:Incident.php?Job=guest");
+                $_SESSION['Login'] = $Login;
+                $_SESSION['Username'] = $row[1];
+                $_SESSION['Guest'] = true;
+                $_SESSION['Employee'] = false;
+                header("Location:Incident.php?Job=Guest");
             } else Echo "Login Failed";
         }
     }
