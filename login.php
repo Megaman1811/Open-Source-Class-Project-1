@@ -56,22 +56,23 @@ if (!empty($_POST['User'])) {
         $Login = mysqli_real_escape_string($connect, $Login);
         $Pass = $_POST["Pass"];
         $Pass = mysqli_real_escape_string($connect, $Pass);
-       //$connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
         if (isset($_POST['Login'])) {
-            $Query = "Select emp_id, admin, name from user_info WHERE emp_id ='$Login' AND password = '$Pass'";
+            $Query = "Select emp_id, admin, name, email from user_info WHERE emp_id ='$Login' AND password = '$Pass'";
             $result = mysqli_query($connect, $Query);
             $row = mysqli_fetch_row($result);
             if (mysqli_num_rows($result) == 1 && $row[0]) {
-                $_SESSION['Login'] = $Login;
+                $_SESSION['Email'] = $row[3];
                 if ($row[1] == 1) {
                     $_SESSION['Admin'] = true;
                     $_SESSION['Username'] = $row[2];
                     $_SESSION['Employee'] = false;
+                    $_SESSION['Guest'] = false;
                     header('Location:adminconsole.php');
                     exit;
 
                 } else {
                     $_SESSION['Employee'] = true;
+                    $_SESSION['Guest'] = false;
                     $_SESSION['Username'] = $row[2];
                     header("Location:Incident.php");
                     exit;
@@ -93,7 +94,7 @@ if (!empty($_POST['User'])) {
             $result = mysqli_query($connect, $Query);
             $row = mysqli_fetch_row($result);
             if (mysqli_num_rows($result) == 1) {
-                $_SESSION['Login'] = $Login;
+                $_SESSION['Email'] = $row[0];
                 $_SESSION['Username'] = $row[1];
                 $_SESSION['Guest'] = true;
                 $_SESSION['Employee'] = false;

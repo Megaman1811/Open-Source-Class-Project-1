@@ -9,15 +9,6 @@
     Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log out</a>
 
     <form method="post">
-        <label for="Record">User Record</label>
-        <br>
-        <input type="text" id="Record" name="UserRec">
-        <br>
-        <label for="ID">ID</label>
-        <br>
-        <input type="text" id="ID" name="ID"/>
-        <br>
-
         <label for="Urgency">Urgency</label>
         <br>
 
@@ -52,8 +43,8 @@
  * Time: 2:47 PM
  */
 
-if (!isset($_SESSION['Username'])){
-    header('Location:login.php');
+if (!isset($_SESSION['Username'])) {
+    header('Location:restricted.php');
 }
 
 $host = "localhost";
@@ -74,9 +65,6 @@ if (!empty($_POST['Category'])) {
 
 
     if ($result) {
-        $ID = $_POST["ID"];
-        $ID = mysqli_real_escape_string($connect, $ID);
-
         $Urgency = $_POST["Urgency"];
         $Urgency = mysqli_real_escape_string($connect, $Urgency);
 
@@ -86,7 +74,7 @@ if (!empty($_POST['Category'])) {
         $Description = $_POST["Des"];
         $Description = mysqli_real_escape_string($connect, $Description);
 
-        $UserRec = $_POST["UserRec"];
+        $UserRec = $_SESSION['Email'];
         $UserRec = mysqli_real_escape_string($connect, $UserRec);
 
         $Category = $_POST["Category"];
@@ -96,10 +84,10 @@ if (!empty($_POST['Category'])) {
         $Date = mysqli_real_escape_string($connect, $Date);
 
 
-        $query = "insert into incidentreports values('$ID','$Date','$Urgency','$Location','$Description', '$UserRec','$Category')";
+        $query = "insert into incidentreports values('','$Date','$Urgency','$Location','$Description','$UserRec','$Category')";
         $result1 = mysqli_query($connect, $query);
-        $Write = fopen('LOG.txt','a');
-        fwrite($Write,$_SESSION['Username']. " ". $Date. "\n");
+        $Write = fopen('LOG.txt', 'a');
+        fwrite($Write, $_SESSION['Username'] . " " . $Date . "\n");
         fclose($Write);
         if (!$result1) {
             die('Invalid query: ' . mysqli_error($connect));
