@@ -67,6 +67,7 @@ or die("Connection Failed");
 
 if (!empty($_POST['Category'])) {
     $Category = $_POST["Category"];
+    $Category = mysqli_real_escape_string($connect, $Category);
 
     $query = "SELECT incident_name from incidentcategory where incident_name = '$Category'";
     $result = mysqli_query($connect, $query);
@@ -74,12 +75,25 @@ if (!empty($_POST['Category'])) {
 
     if ($result) {
         $ID = $_POST["ID"];
+        $ID = mysqli_real_escape_string($connect, $ID);
+
         $Urgency = $_POST["Urgency"];
+        $Urgency = mysqli_real_escape_string($connect, $Urgency);
+
         $Location = $_POST["Location"];
+        $Location = mysqli_real_escape_string($connect, $Location);
+
         $Description = $_POST["Des"];
+        $Description = mysqli_real_escape_string($connect, $Description);
+
         $UserRec = $_POST["UserRec"];
+        $UserRec = mysqli_real_escape_string($connect, $UserRec);
+
         $Category = $_POST["Category"];
+        $Category = mysqli_real_escape_string($connect, $Category);
+
         $Date = date("Y-m-d H:i:s", time());
+        $Date = mysqli_real_escape_string($connect, $Date);
 
 
         $query = "insert into incidentreports values('$ID','$Date','$Urgency','$Location','$Description', '$UserRec','$Category')";
