@@ -13,8 +13,6 @@
         <br>
         <input type="text" id="Record" name="UserRec">
         <br>
-        <label for="Category">Category</label>
-        <br>
         <label for="ID">ID</label>
         <br>
         <input type="text" id="ID" name="ID"/>
