@@ -69,7 +69,7 @@ if (!empty($_POST['User'])) {
                 } else {
                     $_SESSION['Employee'] = true;
                     $_SESSION['Username'] = $row[2];
-                    header("Location:Incident.php?Job=Employee");
+                    header("Location:Incident.php");
                     exit;
                 }
 
@@ -84,12 +84,13 @@ if (!empty($_POST['User'])) {
         if (isset($_POST['Login'])) {
             $Query = "Select email, name from user_info WHERE email ='$Login' AND password = '$Pass'";
             $result = mysqli_query($connect, $Query);
+            $row = mysqli_fetch_row($result);
             if (mysqli_num_rows($result) == 1) {
                 $_SESSION['Login'] = $Login;
                 $_SESSION['Username'] = $row[1];
                 $_SESSION['Guest'] = true;
                 $_SESSION['Employee'] = false;
-                header("Location:Incident.php?Job=Guest");
+                header("Location:Incident.php");
                 exit;
             } else Echo "Login Failed";
         }
