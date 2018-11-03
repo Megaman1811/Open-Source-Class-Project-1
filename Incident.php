@@ -9,15 +9,6 @@
     Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log out</a>
 
     <form method="post">
-        <label for="Urgency">Urgency</label>
-        <br>
-
-        <input type="text" id="Urgency" name="Urgency"/>
-        <br>
-        <label for="Location">Location</label>
-        <br>
-        <input type="text" id="Location" name="Location"/>
-        <br>
         <label for="Description">Description</label>
         <br>
         <input type="text" id="Description" name="Des">
@@ -25,7 +16,14 @@
         <label for="Category">Category</label><br>
         <input type="text" id="Category" name="Category">
         <br>
-
+        <label for="Urgency">Urgency</label>
+        <br>
+        <input type="text" id="Urgency" name="Urgency"/>
+        <br>
+        <label for="Location">Location</label>
+        <br>
+        <input type="text" id="Location" name="Location"/>
+        <br>
         <input type="submit" value="Submit" name="Submit"/>
 
 
