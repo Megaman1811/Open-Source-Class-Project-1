@@ -4,7 +4,6 @@
     <title>Access Denied</title>
 </head>
 <body>
-<?php echo $_SESSION['Username']; ?>
 <h1>You are not allowed on this page</h1>
 <?php if (!isset($_SESSION['Login'])) {
     echo "<p>You will be redirected to the login page in 5 seconds.</p>";
