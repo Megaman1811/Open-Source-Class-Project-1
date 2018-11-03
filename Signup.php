@@ -43,17 +43,30 @@ $host = "localhost";
 $user = "root";
 $password = "";
 $dbName = "proj_db";
+$connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
 
 if (!empty($_POST['User'])) {
+
     $User = $_POST["User"];
+    $User = mysqli_real_escape_string($connect, $User);
+
     $Pass = $_POST["Pass"];
+    $Pass = mysqli_real_escape_string($connect, $Pass);
+
     $Cell = $_POST["Cell"];
+    $Cell = mysqli_real_escape_string($connect, $Cell);
+
     $Email = $_POST["Email"];
+    $Email = mysqli_real_escape_string($connect, $Email);
+
     $Name = $_POST["Name"];
+    $Name = mysqli_real_escape_string($connect, $Name);
+
     $Address = $_POST["Address"];
-    $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
+    $Address = mysqli_real_escape_string($connect, $Address);
+
     //$query = "insert into guest values('$User','$Pass','$Name','$Cell','$Email','$Address')";
-    $query = "INSERT INTO user_info values ('','$Name','$Email','$User','$Pass','$Cell','$Address')";
+    $query = "INSERT INTO user_info values (null ,'$Name','$Email','$User','$Pass','$Cell','$Address','O')";
     $result = mysqli_query($connect, $query);
     if ($result) {
         echo "Entry Successful";
