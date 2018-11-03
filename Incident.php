@@ -74,7 +74,7 @@ if (!empty($_POST['Category'])) {
         $Description = $_POST["Des"];
         $Description = mysqli_real_escape_string($connect, $Description);
 
-        $UserRec = $_POST["UserRec"];
+        $UserRec = $_SESSION['Email'];
         $UserRec = mysqli_real_escape_string($connect, $UserRec);
 
         $Category = $_POST["Category"];
@@ -84,10 +84,10 @@ if (!empty($_POST['Category'])) {
         $Date = mysqli_real_escape_string($connect, $Date);
 
 
-        $query = "insert into incidentreports values('$ID','$Date','$Urgency','$Location','$Description', '$UserRec','$Category')";
+        $query = "insert into incidentreports values('','$Date','$Urgency','$Location','$Description','$UserRec','$Category')";
         $result1 = mysqli_query($connect, $query);
-        $Write = fopen('LOG.txt','a');
-        fwrite($Write,$_SESSION['Username']. " ". $Date. "\n");
+        $Write = fopen('LOG.txt', 'a');
+        fwrite($Write, $_SESSION['Username'] . " " . $Date . "\n");
         fclose($Write);
         if (!$result1) {
             die('Invalid query: ' . mysqli_error($connect));
