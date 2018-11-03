@@ -33,10 +33,10 @@
         <br>
         <input type="text" id="Description" name="Des">
         <br>
-
+        <label for="Category">Category</label><br>
         <input type="text" id="Category" name="Category">
         <br>
-        <label for="Category">Category</label>
+
         <input type="submit" value="Submit" name="Submit"/>
 
 
