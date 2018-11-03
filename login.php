@@ -64,11 +64,13 @@ if (!empty($_POST['User'])) {
                     $_SESSION['Username'] = $row[2];
                     $_SESSION['Employee'] = false;
                     header('Location:adminconsole.php');
+                    exit;
 
                 } else {
                     $_SESSION['Employee'] = true;
                     $_SESSION['Username'] = $row[2];
                     header("Location:Incident.php?Job=Employee");
+                    exit;
                 }
 
             } else Echo "Login Failed";
@@ -88,6 +90,7 @@ if (!empty($_POST['User'])) {
                 $_SESSION['Guest'] = true;
                 $_SESSION['Employee'] = false;
                 header("Location:Incident.php?Job=Guest");
+                exit;
             } else Echo "Login Failed";
         }
     }
