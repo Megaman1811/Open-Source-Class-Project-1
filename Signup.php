@@ -43,6 +43,7 @@ $host = "localhost";
 $user = "root";
 $password = "";
 $dbName = "Project";
+
 if (!empty($_POST['User'])) {
     $User = $_POST["User"];
     $Pass = $_POST["Pass"];
@@ -50,16 +51,11 @@ if (!empty($_POST['User'])) {
     $Email = $_POST["Email"];
     $Name = $_POST["Name"];
     $Address = $_POST["Address"];
-
-    $connect = mysqli_connect($host, $user, $password, $dbName)
-    or die("Connection Failed");
-
-
+    $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
     $query = "insert into guest values('$User','$Pass','$Name','$Cell','$Email','$Address')";
     $result = mysqli_query($connect, $query);
     if ($result) {
         echo "Entry Successful";
-
-    } else
-        echo "failed" . mysqli_error($connect);
+    }
+    else echo "failed" . mysqli_error($connect);
 }
