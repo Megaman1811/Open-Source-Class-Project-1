@@ -9,9 +9,9 @@
 <body>
 <form method="post">
     <p>
-        <label for="User">User:</label><br>
+        <label for="User">Username:</label><br>
         <input type="text" id="User" name="User"/><br>
-        <label for="Pass">Pass:</label><br>
+        <label for="Pass">Password:</label><br>
         <input type="text" id="Pass" name="Pass"/><br>
         <label for="Name">Name:</label><br>
         <input type="text" id="Name" name="Name"/><br>
@@ -42,7 +42,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$dbName = "Project";
+$dbName = "proj_db";
 
 if (!empty($_POST['User'])) {
     $User = $_POST["User"];
@@ -52,7 +52,8 @@ if (!empty($_POST['User'])) {
     $Name = $_POST["Name"];
     $Address = $_POST["Address"];
     $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
-    $query = "insert into guest values('$User','$Pass','$Name','$Cell','$Email','$Address')";
+    //$query = "insert into guest values('$User','$Pass','$Name','$Cell','$Email','$Address')";
+    $query = "INSERT INTO user_info values ('','$Name','$Email','$User','$Pass','$Cell','$Address')";
     $result = mysqli_query($connect, $query);
     if ($result) {
         echo "Entry Successful";
