@@ -89,11 +89,11 @@ if (isset($_POST['UPDATE'])) {
     $Address = $_POST['Address'];
     $Admin = $_POST['Admin'];
 
-    if (!empty($ID) && !empty($User)) {
 
         $query = "SELECT email from user_info where username = '$User' || emp_id = '$ID'";
         $result = mysqli_query($connect, $query);
         $row = mysqli_fetch_row($result);
+
 
         if ($row[0] == $Email) {
             $query = "Update user_info Set emp_id ='$ID' where emp_id = '$ID'; 
@@ -104,7 +104,7 @@ if (isset($_POST['UPDATE'])) {
             Update user_info  set cellphone = '$Cell' where cellphone = '$Cell' ;
             Update user_info set address = '$Address' where address = '$Address' ;
              Update user_info set Admin = '$Admin' where admin = '$Admin'";
-            $result = mysqli_multi_query($connect, $query) or die("query is failed" . mysqli_error($connect));
+            $result = mysqli_store_result(mysqli_multi_query($connect, $query) or die("query is failed" . mysqli_error($connect)));
         } else {
             $query = "Update user_info Set emp_id ='$ID' where emp_id = '$ID'; 
             Update user_info  set name = '$Name' where name = '$Name' ;
@@ -116,7 +116,7 @@ if (isset($_POST['UPDATE'])) {
              Update user_info set Admin = '$Admin' where admin = '$Admin'";
         }
 
-        $result = mysqli_multi_query($connect, $query) or die("query is failed" . mysqli_error($connect));
+        $result = mysqli_store_result(mysqli_multi_query($connect, $query) or die("query is failed" . mysqli_error($connect)));
 
 
         if (mysqli_affected_rows($connect) > 0) {
@@ -135,7 +135,7 @@ if (isset($_POST['UPDATE'])) {
         $Address = '';
         $Admin = '';
     }
-}
+
 
 if (isset($_POST['FIND'])) {
     $ID = $_POST['ID'];
