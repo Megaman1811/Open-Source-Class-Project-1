@@ -80,7 +80,7 @@ Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log ou
         <select id="Category" name="Category">
             <?php
 
-            $selectQuery = "SELECT incident_name FROM incidentcategory";
+            $selectQuery = "SELECT incident_name FROM incidentcategory ORDER BY incident_id ASC ";
 
             $selectResult = mysqli_query($connect, $selectQuery) or die("query is failed" . mysqli_error($con));
 
