@@ -158,8 +158,9 @@ if (isset($_POST['UPDATE'])) {
         $Admin = '';
     }
 
+    //Find By ID
 
-if (isset($_POST['FIND'])) {
+if (isset($_POST['FINDID'])) {
     $ID = $_POST['ID'];
     $ID = mysqli_real_escape_string($connect, $ID);
 
@@ -185,7 +186,7 @@ if (isset($_POST['FIND'])) {
     $Admin = mysqli_real_escape_string($connect, $Admin);
 
 
-    $query = "Select * from user_info where emp_id = '$ID' OR Name = '$Name'";
+    $query = "Select * from user_info where emp_id = '$ID'";
     $result = mysqli_query($connect, $query) or die ("query is failed" . mysqli_error($connect));
     if (($row = mysqli_fetch_row($result)) == true) {
         $ID = $row[0];
@@ -200,6 +201,52 @@ if (isset($_POST['FIND'])) {
 
     } else echo "record not found";
 }
+
+// Find my Name
+
+
+if (isset($_POST['FINDNAME'])) {
+    $ID = $_POST['ID'];
+    $ID = mysqli_real_escape_string($connect, $ID);
+
+    $User = $_POST['User'];
+    $User = mysqli_real_escape_string($connect, $User);
+
+    $Name = $_POST['Name'];
+    $Name = mysqli_real_escape_string($connect, $Name);
+
+    $Email = $_POST['Email'];
+    $Email = mysqli_real_escape_string($connect, $Email);
+
+    $Pass = $_POST['Pass'];
+    $Pass = mysqli_real_escape_string($connect, $Pass);
+
+    $Cell = $_POST['Cell'];
+    $Cell = mysqli_real_escape_string($connect, $Cell);
+
+    $Address = $_POST['Address'];
+    $Address = mysqli_real_escape_string($connect, $Address);
+
+    $Admin = $_POST['Admin'];
+    $Admin = mysqli_real_escape_string($connect, $Admin);
+
+
+    $query = "Select * from user_info where name = '$Name'";
+    $result = mysqli_query($connect, $query) or die ("query is failed" . mysqli_error($connect));
+    if (($row = mysqli_fetch_row($result)) == true) {
+        $ID = $row[0];
+        $Name = $row[1];
+        $Email = $row[2];
+        $User = $row[3];
+        $Pass = $row[4];
+        $Cell = $row[5];
+        $Address = $row[6];
+        $Admin = $row[7];
+
+
+    } else echo "record not found";
+}
+
 
 // Delete
 
@@ -253,10 +300,14 @@ echo "</table>";
     <p> Enter Adress:<input type="text" name="Address" value="<?php echo $Address ?>"/></p>
     <p> Enter Admin Status:<input type="text" name="Admin" value="<?php echo $Admin ?>"/></p>
 
+
+
+    <input type="submit" value="Find By ID" name="FINDID"/>
+    <input type="submit" value="Find By Name" name="FINDNAME"/>
     <input type="submit" value="Update" name="UPDATE"/>
     <input type="submit" value="Delete" name="DELETE"/>
     <input type="submit" value="Save" name="SAVE"/>
-    <input type="submit" value="Find" name="FIND"/>
+
 
 </form>
 
