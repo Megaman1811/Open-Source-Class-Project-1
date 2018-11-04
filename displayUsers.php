@@ -34,7 +34,7 @@ $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection F
 
 
 $ID = '';
-$Name= '';
+$Name = '';
 $Email = '';
 $User = '';
 $Pass = '';
@@ -68,7 +68,7 @@ if (isset($_POST['SAVE'])) {
         echo "Input empty. Data not entered";
     }
     $ID = '';
-    $Name= '';
+    $Name = '';
     $Email = '';
     $User = '';
     $Pass = '';
@@ -90,15 +90,35 @@ if (isset($_POST['UPDATE'])) {
     $Admin = $_POST['Admin'];
 
     if (!empty($ID) && !empty($User)) {
-        $query = "Update user_info Set emp_id ='$ID' where emp_id = '$ID' 
- Update user_info  set name = '$Name' where name = '$Name' 
- Update user_info  set email = '$Email' where email = '$Email' 
- Update user_info  set username = '$User'where username = '$User' 
-Update user_info  set password = '$Pass' where password = '$Pass' 
-Update user_info  set cellphone = '$Cell' where cellphone = '$Cell' 
-Update user_info set address = '$Address' where address = '$Address' 
- Update user_info set Admin = '$Admin' where admin = '$Admin'";
+
+        $query = "SELECT email from user_info where username = '$User' || emp_id = '$ID'";
+        $result = mysqli_query($connect, $query);
+        $row = mysqli_fetch_row($result);
+
+        if ($row[0] == $Email) {
+            $query = "Update user_info Set emp_id ='$ID' where emp_id = '$ID'; 
+            Update user_info  set name = '$Name' where name = '$Name' ;
+            
+            Update user_info  set username = '$User'where username = '$User' ;
+            Update user_info  set password = '$Pass' where password = '$Pass' ;
+            Update user_info  set cellphone = '$Cell' where cellphone = '$Cell' ;
+            Update user_info set address = '$Address' where address = '$Address' ;
+             Update user_info set Admin = '$Admin' where admin = '$Admin'";
+            $result = mysqli_multi_query($connect, $query) or die("query is failed" . mysqli_error($connect));
+        } else {
+            $query = "Update user_info Set emp_id ='$ID' where emp_id = '$ID'; 
+            Update user_info  set name = '$Name' where name = '$Name' ;
+            Update user_info  set email = '$Email' where email = '$Email' ;
+            Update user_info  set username = '$User'where username = '$User' ;
+            Update user_info  set password = '$Pass' where password = '$Pass' ;
+            Update user_info  set cellphone = '$Cell' where cellphone = '$Cell' ;
+            Update user_info set address = '$Address' where address = '$Address' ;
+             Update user_info set Admin = '$Admin' where admin = '$Admin'";
+        }
+
         $result = mysqli_multi_query($connect, $query) or die("query is failed" . mysqli_error($connect));
+
+
         if (mysqli_affected_rows($connect) > 0) {
             echo "Data updated";
 
@@ -107,7 +127,7 @@ Update user_info set address = '$Address' where address = '$Address'
         }
 
         $ID = '';
-        $Name= '';
+        $Name = '';
         $Email = '';
         $User = '';
         $Pass = '';
@@ -117,7 +137,7 @@ Update user_info set address = '$Address' where address = '$Address'
     }
 }
 
-if(isset($_POST['FIND'])){
+if (isset($_POST['FIND'])) {
     $ID = $_POST['ID'];
     $User = $_POST['User'];
     $Name = $_POST['Name'];
@@ -139,8 +159,7 @@ if(isset($_POST['FIND'])){
         $Admin = $row[7];
 
 
-    }
-    else echo "record not found";
+    } else echo "record not found";
 }
 
 // Delete
@@ -196,8 +215,6 @@ echo "</table>";
     <input type="submit" value="Find" name="FIND"/>
 
 </form>
-
-
 
 
 </body>
