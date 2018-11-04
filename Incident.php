@@ -22,12 +22,16 @@ $connect = mysqli_connect($host, $user, $password, $dbName)
 or die("Connection Failed");
 
 
+//Displays Categories Dynamically in a Select
+
 if (!empty($_POST['Category'])) {
     $Category = $_POST["Category"];
 
     $query = "SELECT incident_id, incident_name from incidentcategory where incident_name = '$Category'";
     $result = mysqli_query($connect, $query);
 
+
+    //Takes user info and submits it to the Reports Table
 
     if ($result) {
         $Urgency = $_POST["Urgency"];

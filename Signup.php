@@ -46,6 +46,9 @@ $password = "";
 $dbName = "proj_db";
 $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
 
+
+//Allows a guest to sign up and add the account to the DB
+
 if (!empty($_POST['User'])) {
 
     $User = $_POST["User"];

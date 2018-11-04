@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+//Restricts User based on their session id
+session_start(); ?>
 <html>
 <head>
     <title>Access Denied</title>

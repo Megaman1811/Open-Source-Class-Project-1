@@ -49,6 +49,9 @@ $user = "root";
 $password = "";
 $dbName = "proj_db";
 
+
+//Login If User is employee
+
 if (!empty($_POST['User'])) {
     if ($_POST['Job'] == "Employee") {
         $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
@@ -81,6 +84,8 @@ if (!empty($_POST['User'])) {
             } else Echo "Login Failed";
         }
     }
+
+    //Login if user is guest
 
     if ($_POST['Job'] == "Guest") {
         $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");

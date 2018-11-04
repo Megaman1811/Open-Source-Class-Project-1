@@ -9,5 +9,7 @@
 session_start();
 session_destroy();
 
+//Logs User Out
+
 
 header('Location:login.php?logout=1');

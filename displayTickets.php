@@ -23,14 +23,31 @@
         $UserRec = '';
         $Category= '';
 
+        //Saves a new Ticket
+
         if (isset($_POST['SAVE'])) {
             $ID = $_POST['ID'];
+            $ID = mysqli_real_escape_string($connect, $ID);
+
+
             $Date = date("Y-m-d H:i:s", time());
+            $Date = mysqli_real_escape_string($connect, $Date);
+
+
             $Urgency = $_POST['Urgency'];
+            $Urgency = mysqli_real_escape_string($connect, $Urgency);
+
             $Location = $_POST['Location'];
+            $Location = mysqli_real_escape_string($connect, $Location);
+
             $Description = $_POST['Description'];
+            $Description = mysqli_real_escape_string($connect, $Description);
+
             $UserRec = $_POST['UserRec'];
+            $UserRec= mysqli_real_escape_string($connect, $UserRec);
+
             $Category = $_POST['Category'];
+            $Category = mysqli_real_escape_string($connect, $Category);
 
 
             if (!empty($ID)) {
@@ -52,14 +69,31 @@
             $Category= '';
         }
 
+        //Finds a ticket from the DB
+
         if(isset($_POST['FIND'])){
             $ID = $_POST['ID'];
+            $ID = mysqli_real_escape_string($connect, $ID);
+
+
             $Date = date("Y-m-d H:i:s", time());
+            $Date = mysqli_real_escape_string($connect, $Date);
+
+
             $Urgency = $_POST['Urgency'];
+            $Urgency = mysqli_real_escape_string($connect, $Urgency);
+
             $Location = $_POST['Location'];
+            $Location = mysqli_real_escape_string($connect, $Location);
+
             $Description = $_POST['Description'];
+            $Description = mysqli_real_escape_string($connect, $Description);
+
             $UserRec = $_POST['UserRec'];
+            $UserRec= mysqli_real_escape_string($connect, $UserRec);
+
             $Category = $_POST['Category'];
+            $Category = mysqli_real_escape_string($connect, $Category);
 
             $query = "Select * from incidentreports where incident_id = '$ID'";
             $result = mysqli_query($connect, $query) or die ("query is failed" . mysqli_error($connect));
@@ -77,14 +111,31 @@
             else echo "record not found";
         }
 
+        //Deletes a Ticket from the DB
+
         if (isset($_POST['DELETE'])) {
             $ID = $_POST['ID'];
+            $ID = mysqli_real_escape_string($connect, $ID);
+
+
             $Date = date("Y-m-d H:i:s", time());
+            $Date = mysqli_real_escape_string($connect, $Date);
+
+
             $Urgency = $_POST['Urgency'];
+            $Urgency = mysqli_real_escape_string($connect, $Urgency);
+
             $Location = $_POST['Location'];
+            $Location = mysqli_real_escape_string($connect, $Location);
+
             $Description = $_POST['Description'];
+            $Description = mysqli_real_escape_string($connect, $Description);
+
             $UserRec = $_POST['UserRec'];
+            $UserRec= mysqli_real_escape_string($connect, $UserRec);
+
             $Category = $_POST['Category'];
+            $Category = mysqli_real_escape_string($connect, $Category);
 
             if (!empty($ID)) {
                 $query = "Delete from incidentreports where incident_id = '$ID'";
@@ -105,6 +156,8 @@
             $UserRec = '';
             $Category= '';
         }
+
+        //Makes the main Ticket table
 
 
 

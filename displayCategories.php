@@ -30,10 +30,12 @@ Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log ou
     $category2 = '';
 
 
-    //Save catrgory
+    //Save category
 
     if (isset($_POST['SAVE'])) {
         $category = $_POST['category2'];
+        $Category = mysqli_real_escape_string($connect, $Category);
+
         if (!empty($category)) {
             $query = "Insert Into incidentcategory Values('','$category')";
             $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
@@ -49,12 +51,16 @@ Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log ou
         $category2 = '';
     }
 
-    // Update & Edit
+    // Update & Edit Category
 
     if (isset($_POST['UPDATE'])) {
 
         $category = $_POST['category'];
+        $Category = mysqli_real_escape_string($connect, $Category);
+
         $category2 = $_POST['category2'];
+        $Category2 = mysqli_real_escape_string($connect, $Category2);
+
         if (!empty($category) && !empty($category2)) {
             $query = "Update incidentcategory Set incident_name ='$category2' where incident_name = '$category'";
             $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
@@ -70,10 +76,12 @@ Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log ou
         }
     }
 
-    // Delete
+    // Delete Category
 
     if (isset($_POST['DELETE'])) {
         $category = $_POST['category'];
+        $Category = mysqli_real_escape_string($connect, $Category);
+
         if (!empty($category)) {
             $query = "Delete from incidentcategory where incident_name = '$category'";
             $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
