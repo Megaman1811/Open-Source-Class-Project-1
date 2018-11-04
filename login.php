@@ -49,6 +49,9 @@ $user = "root";
 $password = "";
 $dbName = "proj_db";
 
+
+//Login If User is employee
+
 if (!empty($_POST['User'])) {
     if ($_POST['Job'] == "Employee") {
         $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
@@ -67,20 +70,22 @@ if (!empty($_POST['User'])) {
                     $_SESSION['Username'] = $row[2];
                     $_SESSION['Employee'] = false;
                     $_SESSION['Guest'] = false;
-                    header('Location:adminconsole.php');
+                    header('Location:homepage.php');
                     exit;
 
                 } else {
                     $_SESSION['Employee'] = true;
                     $_SESSION['Guest'] = false;
                     $_SESSION['Username'] = $row[2];
-                    header("Location:Incident.php");
+                    header("Location:homepage.php");
                     exit;
                 }
 
             } else Echo "Login Failed";
         }
     }
+
+    //Login if user is guest
 
     if ($_POST['Job'] == "Guest") {
         $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
@@ -98,7 +103,7 @@ if (!empty($_POST['User'])) {
                 $_SESSION['Username'] = $row[1];
                 $_SESSION['Guest'] = true;
                 $_SESSION['Employee'] = false;
-                header("Location:Incident.php");
+                header("Location:homepage.php");
                 exit;
             } else Echo "Login Failed";
         }
