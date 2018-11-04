@@ -248,7 +248,7 @@ if (isset($_POST['FINDNAME'])) {
 }
 
 
-// Delete
+// Delete User from Table
 
 if (isset($_POST['DELETE'])) {
     $ID = $_POST['ID'];
