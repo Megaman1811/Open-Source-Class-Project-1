@@ -90,12 +90,15 @@ if (isset($_POST['UPDATE'])) {
     $Admin = $_POST['Admin'];
 
     if (!empty($ID) && !empty($User)) {
-        $query = "Update user_info Set emp_id ='$ID' where emp_id = '$ID' AND set name = '$Name' 
-where name = '$Name' AND set email = '$Email' where email = '$Email' AND set username = '$User'
-where username = '$User' and set password = '$Pass' where password = '$Pass' and set cellphone = '$Cell'
-where cellphone = '$Cell' and set address = '$Address' where address = '$Address' and set Admin = '$Admin' ||
- where admin = '$Admin'";
-        $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
+        $query = "Update user_info Set emp_id ='$ID' where emp_id = '$ID' 
+ Update user_info  set name = '$Name' where name = '$Name' 
+ Update user_info  set email = '$Email' where email = '$Email' 
+ Update user_info  set username = '$User'where username = '$User' 
+Update user_info  set password = '$Pass' where password = '$Pass' 
+Update user_info  set cellphone = '$Cell' where cellphone = '$Cell' 
+Update user_info set address = '$Address' where address = '$Address' 
+ Update user_info set Admin = '$Admin' where admin = '$Admin'";
+        $result = mysqli_multi_query($connect, $query) or die("query is failed" . mysqli_error($connect));
         if (mysqli_affected_rows($connect) > 0) {
             echo "Data updated";
 
