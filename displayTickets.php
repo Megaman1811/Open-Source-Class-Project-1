@@ -157,6 +157,58 @@
             $Category= '';
         }
 
+        //Updates Tickets
+        if (isset($_POST['UPDATE'])) {
+            $ID = $_POST['ID'];
+            $ID = mysqli_real_escape_string($connect, $ID);
+
+
+            $Date = date("Y-m-d H:i:s", time());
+            $Date = mysqli_real_escape_string($connect, $Date);
+
+
+            $Urgency = $_POST['Urgency'];
+            $Urgency = mysqli_real_escape_string($connect, $Urgency);
+
+            $Location = $_POST['Location'];
+            $Location = mysqli_real_escape_string($connect, $Location);
+
+            $Description = $_POST['Description'];
+            $Description = mysqli_real_escape_string($connect, $Description);
+
+            $UserRec = $_POST['UserRec'];
+            $UserRec= mysqli_real_escape_string($connect, $UserRec);
+
+            $Category = $_POST['Category'];
+            $Category = mysqli_real_escape_string($connect, $Category);
+
+
+            $query = "SELECT incident_id from incidentreports where incident_id = '$ID'";
+            $result = mysqli_query($connect, $query);
+            $row = mysqli_fetch_row($result);
+
+
+            if ($row[0] == $ID) {
+                $query = "Update incidentreports Set incident_id =$ID , date = '$Date' ,  urgency = '$Urgency' ,
+            location = '$Location' , description = '$Description' , user_record = '$UserRec' ,
+             category = '$Category' where incident_id= $ID";
+                $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
+            } else {
+                $query = "Update incidentreports Set incdient_id =$ID , date = '$Date' ,  urgency = '$Urgency' ,
+            location = '$Location' , description = '$Description' , user_record = '$UserRec' ,
+             category = '$Category' where incident_id= $ID";
+                $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
+            }
+
+            if (mysqli_affected_rows($connect) > 0) {
+                echo "Data updated";
+
+            } else {
+                echo "Data not updated";
+            }
+        }
+
+
         //Makes the main Ticket table
 
 
