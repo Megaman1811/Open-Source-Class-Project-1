@@ -14,6 +14,8 @@
     <?php if (isset($_SESSION['Admin'])) {
      echo "| <a href=\"adminconsole.php\">Admin Console</a>";
     } //Checks if Admin. if you are, adds link to console?> <br>
+
+    <?php if (isset($_GET['added']) == 1) echo "You have successfully submitted a ticket"; ?>
     <form method="post">
 
         <p>
