@@ -82,7 +82,7 @@ Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log ou
 
             $selectQuery = "SELECT incident_name FROM incidentcategory ORDER BY incident_id ASC ";
 
-            $selectResult = mysqli_query($connect, $selectQuery) or die("query is failed" . mysqli_error($con));
+            $selectResult = mysqli_query($connect, $selectQuery) or die("query is failed" . mysqli_error($connect));
 
             while (($row = mysqli_fetch_row($selectResult)) == true) {
                 echo "<option value='$row[0]'>$row[0]</option>";
