@@ -47,13 +47,28 @@ $Admin = '';
 
 if (isset($_POST['SAVE'])) {
     $ID = $_POST['ID'];
+    $ID = mysqli_real_escape_string($connect, $ID);
+
     $User = $_POST['User'];
+    $User = mysqli_real_escape_string($connect, $User);
+
     $Name = $_POST['Name'];
+    $Name = mysqli_real_escape_string($connect, $Name);
+
     $Email = $_POST['Email'];
+    $Email = mysqli_real_escape_string($connect, $Email);
+
     $Pass = $_POST['Pass'];
+    $Pass = mysqli_real_escape_string($connect, $Pass);
+
     $Cell = $_POST['Cell'];
+    $Cell = mysqli_real_escape_string($connect, $Cell);
+
     $Address = $_POST['Address'];
+    $Address = mysqli_real_escape_string($connect, $Address);
+
     $Admin = $_POST['Admin'];
+    $Admin = mysqli_real_escape_string($connect, $Admin);
 
 
     if (!empty($Name)) {
@@ -81,17 +96,31 @@ if (isset($_POST['SAVE'])) {
 
 if (isset($_POST['UPDATE'])) {
     $ID = $_POST['ID'];
+    $ID = mysqli_real_escape_string($connect, $ID);
+
     $User = $_POST['User'];
+    $User = mysqli_real_escape_string($connect, $User);
+
     $Name = $_POST['Name'];
+    $Name = mysqli_real_escape_string($connect, $Name);
+
     $Email = $_POST['Email'];
     $Email = mysqli_real_escape_string($connect, $Email);
+
     $Pass = $_POST['Pass'];
+    $Pass = mysqli_real_escape_string($connect, $Pass);
+
     $Cell = $_POST['Cell'];
+    $Cell = mysqli_real_escape_string($connect, $Cell);
+
     $Address = $_POST['Address'];
+    $Address = mysqli_real_escape_string($connect, $Address);
+
     $Admin = $_POST['Admin'];
+    $Admin = mysqli_real_escape_string($connect, $Admin);
 
 
-        $query = "SELECT email from user_info where username = '$User' || emp_id = '$ID'";
+    $query = "SELECT email from user_info where username = '$User' || emp_id = '$ID'";
         $result = mysqli_query($connect, $query);
         $row = mysqli_fetch_row($result);
 
@@ -128,13 +157,30 @@ if (isset($_POST['UPDATE'])) {
 
 if (isset($_POST['FIND'])) {
     $ID = $_POST['ID'];
+    $ID = mysqli_real_escape_string($connect, $ID);
+
     $User = $_POST['User'];
+    $User = mysqli_real_escape_string($connect, $User);
+
     $Name = $_POST['Name'];
+    $Name = mysqli_real_escape_string($connect, $Name);
+
     $Email = $_POST['Email'];
+    $Email = mysqli_real_escape_string($connect, $Email);
+
     $Pass = $_POST['Pass'];
+    $Pass = mysqli_real_escape_string($connect, $Pass);
+
     $Cell = $_POST['Cell'];
+    $Cell = mysqli_real_escape_string($connect, $Cell);
+
     $Address = $_POST['Address'];
+    $Address = mysqli_real_escape_string($connect, $Address);
+
     $Admin = $_POST['Admin'];
+    $Admin = mysqli_real_escape_string($connect, $Admin);
+
+
     $query = "Select * from user_info where emp_id = '$ID' OR Name = '$Name'";
     $result = mysqli_query($connect, $query) or die ("query is failed" . mysqli_error($connect));
     if (($row = mysqli_fetch_row($result)) == true) {
@@ -154,9 +200,14 @@ if (isset($_POST['FIND'])) {
 // Delete
 
 if (isset($_POST['DELETE'])) {
-    $category = $_POST['category'];
-    if (!empty($category)) {
-        $query = "Delete from incidentcategory where incident_name = '$category'";
+    $ID = $_POST['ID'];
+    $ID = mysqli_real_escape_string($connect, $ID);
+
+    $Name = $_POST['Name'];
+    $Name = mysqli_real_escape_string($connect, $Name);
+
+    if (!empty($ID)) {
+        $query = "Delete from user_info where emp_id = '$ID' OR Name = '$Name'";
         $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
         if (mysqli_affected_rows($connect) > 0) {
             echo "Record Deleted";
@@ -166,8 +217,8 @@ if (isset($_POST['DELETE'])) {
     } else {
         echo "Data not changed";
     }
-    $category = '';
-    $category2 = '';
+    $ID= '';
+    $Name ='';
 }
 
 $query = "SELECT * FROM user_info ORDER BY username ASC ";
