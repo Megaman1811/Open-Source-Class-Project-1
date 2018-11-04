@@ -46,7 +46,7 @@
 
 
 if (isset($_SESSION['Username'])) {
-    header('Location:restricted.php?loggedin=1');
+    header('Location:restricted.php');
 }
 
 $host = "localhost";

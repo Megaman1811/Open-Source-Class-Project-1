@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,9 +43,8 @@
  */
 
 if (isset($_SESSION['Username'])) {
-    header('Location:restricted.php?loggedin=1');
+    header('Location:restricted.php');
 }
-
 $host = "localhost";
 $user = "root";
 $password = "";
