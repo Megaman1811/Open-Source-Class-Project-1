@@ -19,12 +19,12 @@
         $connect = mysqli_connect($host, $user, $password, $dbName) or die("Connection Failed");
 
         $ID = '';
-        $Date= '';
+        $Date = '';
         $Urgency = '';
         $Location = '';
         $Description = '';
         $UserRec = '';
-        $Category= '';
+        $Category = '';
 
         //Saves a new Ticket
 
@@ -47,7 +47,7 @@
             $Description = mysqli_real_escape_string($connect, $Description);
 
             $UserRec = $_POST['UserRec'];
-            $UserRec= mysqli_real_escape_string($connect, $UserRec);
+            $UserRec = mysqli_real_escape_string($connect, $UserRec);
 
             $Category = $_POST['Category'];
             $Category = mysqli_real_escape_string($connect, $Category);
@@ -69,12 +69,12 @@
             $Location = '';
             $Description = '';
             $UserRec = '';
-            $Category= '';
+            $Category = '';
         }
 
         //Finds a ticket from the DB
 
-        if(isset($_POST['FIND'])){
+        if (isset($_POST['FIND'])) {
             $ID = $_POST['ID'];
             $ID = mysqli_real_escape_string($connect, $ID);
 
@@ -93,7 +93,7 @@
             $Description = mysqli_real_escape_string($connect, $Description);
 
             $UserRec = $_POST['UserRec'];
-            $UserRec= mysqli_real_escape_string($connect, $UserRec);
+            $UserRec = mysqli_real_escape_string($connect, $UserRec);
 
             $Category = $_POST['Category'];
             $Category = mysqli_real_escape_string($connect, $Category);
@@ -110,8 +110,7 @@
                 $Category = $row[6];
 
 
-            }
-            else echo "record not found";
+            } else echo "record not found";
         }
 
         //Deletes a Ticket from the DB
@@ -135,7 +134,7 @@
             $Description = mysqli_real_escape_string($connect, $Description);
 
             $UserRec = $_POST['UserRec'];
-            $UserRec= mysqli_real_escape_string($connect, $UserRec);
+            $UserRec = mysqli_real_escape_string($connect, $UserRec);
 
             $Category = $_POST['Category'];
             $Category = mysqli_real_escape_string($connect, $Category);
@@ -152,12 +151,12 @@
                 echo "Data not changed";
             }
             $ID = '';
-            $Date= '';
+            $Date = '';
             $Urgency = '';
             $Location = '';
             $Description = '';
             $UserRec = '';
-            $Category= '';
+            $Category = '';
         }
 
         //Updates Tickets
@@ -180,7 +179,7 @@
             $Description = mysqli_real_escape_string($connect, $Description);
 
             $UserRec = $_POST['UserRec'];
-            $UserRec= mysqli_real_escape_string($connect, $UserRec);
+            $UserRec = mysqli_real_escape_string($connect, $UserRec);
 
             $Category = $_POST['Category'];
             $Category = mysqli_real_escape_string($connect, $Category);
@@ -197,7 +196,7 @@
              category = '$Category' where incident_id= $ID";
                 $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
             } else {
-                $query = "Update incidentreports Set incdient_id =$ID , date = '$Date' ,  urgency = '$Urgency' ,
+                $query = "Update incidentreports Set incident_id =$ID , date = '$Date' ,  urgency = '$Urgency' ,
             location = '$Location' , description = '$Description' , user_record = '$UserRec' ,
              category = '$Category' where incident_id= $ID";
                 $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
@@ -213,8 +212,6 @@
 
 
         //Makes the main Ticket table
-
-
 
 
         $query = "Select * from incidentreports ORDER BY incident_id asc ";
@@ -233,11 +230,6 @@
         ?>
 
 
-
-
-
-
-
         <form method="post">
     <p> Enter ID:<input type="text" name="ID" value="<?php echo $ID ?>"/></p>
     <p> Enter Urgency:<input type="text" name="Urgency" value="<?php echo $Urgency ?>"/></p>
@@ -253,23 +245,8 @@
 
     </form>
 
-
-
-
     </body>
-
-
     </html>
-
-
-
-
-
-
-
-
-
-
 
 
 <?php

@@ -63,7 +63,7 @@ Logged in as: <?php echo $_SESSION['Username'];
         $Category = mysqli_real_escape_string($connect, $Category);
 
         $category2 = $_POST['category2'];
-        $Category2 = mysqli_real_escape_string($connect, $Category2);
+        $category2 = mysqli_real_escape_string($connect, $category2);
 
         if (!empty($category) && !empty($category2)) {
             $query = "Update incidentcategory Set incident_name ='$category2' where incident_name = '$category'";
