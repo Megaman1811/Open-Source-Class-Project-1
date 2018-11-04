@@ -25,7 +25,7 @@
 
         if (isset($_POST['SAVE'])) {
             $ID = $_POST['ID'];
-            $Date = $_POST['Date'];
+            $Date = date("Y-m-d H:i:s", time());
             $Urgency = $_POST['Urgency'];
             $Location = $_POST['Location'];
             $Description = $_POST['Description'];
@@ -45,7 +45,6 @@
                 echo "Input empty. Data not entered";
             }
             $ID = '';
-            $Date= '';
             $Urgency = '';
             $Location = '';
             $Description = '';
@@ -55,7 +54,7 @@
 
         if(isset($_POST['FIND'])){
             $ID = $_POST['ID'];
-            $Date = $_POST['Date'];
+            $Date = date("Y-m-d H:i:s", time());
             $Urgency = $_POST['Urgency'];
             $Location = $_POST['Location'];
             $Description = $_POST['Description'];
@@ -80,7 +79,7 @@
 
         if (isset($_POST['DELETE'])) {
             $ID = $_POST['ID'];
-            $Date = $_POST['Date'];
+            $Date = date("Y-m-d H:i:s", time());
             $Urgency = $_POST['Urgency'];
             $Location = $_POST['Location'];
             $Description = $_POST['Description'];
@@ -133,7 +132,6 @@
 
         <form method="post">
     <p> Enter ID:<input type="text" name="ID" value="<?php echo $ID ?>"/></p>
-    <p> Enter Date: <input type="date" name="Date" value="<?php echo $Date ?>"/></p>
     <p> Enter Urgency:<input type="text" name="Urgency" value="<?php echo $Urgency ?>"/></p>
     <p> Enter Location:<input type="text" name="Location" value="<?php echo $Location ?>"/></p>
     <p> Enter Description:<input type="text" name="Description" value="<?php echo $Description ?>"/></p>
