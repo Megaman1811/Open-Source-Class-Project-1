@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<a href="login.php">Return to login screen</a>
 <form method="post">
     <p>
         <label for="User">Username:</label><br>
@@ -69,6 +70,6 @@ if (!empty($_POST['User'])) {
     $query = "INSERT INTO user_info values (null ,'$Name','$Email','$User','$Pass','$Cell','$Address','0')";
     $result = mysqli_query($connect, $query);
     if ($result) {
-        echo "Entry Successful";
-    } else echo "failed" . mysqli_error($connect);
+        header('Location:login.php?signup=1');
+    } else echo "Account Creation Failed" . mysqli_error($connect);
 }

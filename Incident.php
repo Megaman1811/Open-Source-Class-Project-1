@@ -75,40 +75,43 @@ if (!empty($_POST['Category'])) {
 Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log out</a>
 
 <form method="post">
-    <label for="Category">Category</label><br>
-    <select id="Category" name="Category">
-        <?php
+    <p>
+        <label for="Category">Category</label><br>
+        <select id="Category" name="Category">
+            <?php
 
-        $selectQuery = "SELECT incident_name FROM incidentcategory";
+            $selectQuery = "SELECT incident_name FROM incidentcategory ORDER BY incident_id ASC ";
 
-        $selectResult = mysqli_query($connect, $selectQuery) or die("query is failed" . mysqli_error($con));
+            $selectResult = mysqli_query($connect, $selectQuery) or die("query is failed" . mysqli_error($con));
 
-        while (($row = mysqli_fetch_row($selectResult)) == true) {
-            echo "<option value='$row[0]'>$row[0]</option>";
-        };
+            while (($row = mysqli_fetch_row($selectResult)) == true) {
+                echo "<option value='$row[0]'>$row[0]</option>";
+            };
 
-        ?>
-    </select>
-    <br>
-    <label for="Description">Description</label>
-    <br>
-    <input type="text" id="Description" name="Des">
-    <br>
-    <label for="Location">Location</label>
-    <br>
-    <input type="text" id="Location" name="Location"/>
-    <br>
-    <label for="Urgency">Urgency</label>
-    <br>
-    <select id="Urgency" name="Urgency">
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-        <option value="very high">Very High</option>
-    </select>
-    <br>
-    <input type="submit" value="Submit" name="Submit"/>
-
+            ?>
+        </select>
+        <br>
+        <label for="Description">Description</label>
+        <br>
+        <input type="text" id="Description" name="Des">
+        <br>
+        <label for="Location">Location</label>
+        <br>
+        <input type="text" id="Location" name="Location"/>
+        <br>
+        <label for="Urgency">Urgency</label>
+        <br>
+        <select id="Urgency" name="Urgency">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="very high">Very High</option>
+        </select>
+        <br>
+    </p>
+    <p>
+        <input type="submit" value="Submit" name="Submit"/>
+    </p>
 
 </form>
 
