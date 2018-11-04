@@ -9,6 +9,10 @@
 
     <form method="post">
         <p>
+            <label for="empID">Employee ID:</label>
+            <br>
+            <input type="text" id="empID" name="empID"/>
+            <br>
             <label for="name">Name:</label>
             <br>
             <input type="text" id="name" name="name"/>
@@ -68,6 +72,7 @@ or die("Connection Failed");
 
 if (!empty($_POST['name'])) {
 
+    $EmpID = $_POST['empID'];
     $Name = $_POST['name'];
     $Email = $_POST['email'];
     $UserPass = $_POST['password'];
@@ -76,7 +81,7 @@ if (!empty($_POST['name'])) {
     $Admin = $_POST['admin'];
 
 
-    $query = "INSERT INTO user_info VALUES('','$Name','$Email',null ,'$UserPass','$Cell','$Address','$Admin')";
+    $query = "INSERT INTO user_info VALUES('$EmpID','$Name','$Email',null ,'$UserPass','$Cell','$Address','$Admin')";
     $result = mysqli_query($connect, $query);
 
     if ($result) {
