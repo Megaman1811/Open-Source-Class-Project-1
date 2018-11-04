@@ -76,7 +76,12 @@ if (!empty($_POST['Category'])) {
     <title>Incident</title>
 </head>
 <body>
-Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log out</a>
+Logged in as: <?php echo $_SESSION['Username'];
+//This gets the username from the session cookie?> | <a href="logout.php">Log out</a> |
+<a href="homepage.php">Homepage</a>
+<?php if (isset($_SESSION['Admin'])) {
+    echo "| <a href=\"adminconsole.php\">Admin Console</a>";
+} //Checks if Admin. if you are, adds link to console?> <br>
 
 <form method="post">
     <p>
