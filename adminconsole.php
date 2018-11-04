@@ -1,6 +1,5 @@
-<?php
-//If user logged is an admin, They are brought to this console
-session_start(); ?>
+<!-- If user logged is an admin, They are brought to this console -->
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
