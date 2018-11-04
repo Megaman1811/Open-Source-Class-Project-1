@@ -257,8 +257,8 @@ if (isset($_POST['DELETE'])) {
     $Name = $_POST['Name'];
     $Name = mysqli_real_escape_string($connect, $Name);
 
-    if (!empty($ID)) {
-        $query = "Delete from user_info where emp_id = '$ID' OR Name = '$Name'";
+    if (!empty($ID) || !empty($Name)) {
+        $query = "Delete from user_info where emp_id = '$ID' OR name = '$Name'";
         $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
         if (mysqli_affected_rows($connect) > 0) {
             echo "Record Deleted";

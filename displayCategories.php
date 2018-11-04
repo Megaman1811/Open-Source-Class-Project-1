@@ -38,7 +38,7 @@ Logged in as: <?php echo $_SESSION['Username'];
 
     if (isset($_POST['SAVE'])) {
         $category = $_POST['category2'];
-        $Category = mysqli_real_escape_string($connect, $Category);
+        $Category = mysqli_real_escape_string($connect, $category);
 
         if (!empty($category)) {
             $query = "Insert Into incidentcategory Values('','$category')";
