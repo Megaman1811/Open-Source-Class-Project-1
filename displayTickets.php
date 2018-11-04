@@ -4,7 +4,7 @@
 
 </head>
 <body>
-Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log out</a><br>
+Logged in as: <?php echo $_SESSION['Username']; ?> | <a href="logout.php">Log out</a> | <a href="adminconsole.php">Admin Console</a> <br>
 </body>
 </html>
 
