@@ -98,17 +98,15 @@ if (isset($_POST['UPDATE'])) {
 
         if ($row[0] == $Email) {
             $query = "Update user_info Set emp_id ='$ID' , name = '$Name' ,  username = '$User' ,
-            password = '$Pass' , cellphone = '$Cell'  address = '$Address' ,
+            password = '$Pass' , cellphone = '$Cell' , address = '$Address' ,
              Admin = $Admin where email = '$Email'";
             $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
         } else {
             $query = "Update user_info Set emp_id ='$ID' , name = '$Name' ,  username = '$User' ,
             password = '$Pass' , cellphone = '$Cell'  address = '$Address' ,
              Admin = '$Admin', email = '$Email' where name = '$Name'";
+            $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
         }
-
-        $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
-
 
         if (mysqli_affected_rows($connect) > 0) {
             echo "Data updated";
