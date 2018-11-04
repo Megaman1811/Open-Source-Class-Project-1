@@ -40,6 +40,11 @@
  * Date: 2018-11-01
  * Time: 2:23 PM
  */
+
+if (isset($_SESSION['Username'])) {
+    header('Location:restricted.php?loggedin=1');
+}
+
 $host = "localhost";
 $user = "root";
 $password = "";
