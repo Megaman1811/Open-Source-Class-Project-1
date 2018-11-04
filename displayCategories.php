@@ -60,7 +60,7 @@ Logged in as: <?php echo $_SESSION['Username'];
     if (isset($_POST['UPDATE'])) {
 
         $category = $_POST['category'];
-        $Category = mysqli_real_escape_string($connect, $Category);
+        $Category = mysqli_real_escape_string($connect, $category);
 
         $category2 = $_POST['category2'];
         $category2 = mysqli_real_escape_string($connect, $category2);
@@ -84,7 +84,7 @@ Logged in as: <?php echo $_SESSION['Username'];
 
     if (isset($_POST['DELETE'])) {
         $category = $_POST['category'];
-        $Category = mysqli_real_escape_string($connect, $Category);
+        $Category = mysqli_real_escape_string($connect, $category);
 
         if (!empty($category)) {
             $query = "Delete from incidentcategory where incident_name = '$category'";
