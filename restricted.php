@@ -12,7 +12,7 @@ session_start(); ?>
     echo "<meta http-equiv=\"refresh\" content=\"5;url=login.php\"/>"; //Refreshes page in 5 seconds
 } else if (!isset($_SESSION['Admin'])) {
     echo "<p>You will be redirected to your homepage in 5 seconds.</p>";
-    echo "<meta http-equiv=\"refresh\" content=\"5;url=login.php\"/>";
+    echo "<meta http-equiv=\"refresh\" content=\"5;url=homepage.php\"/>";
 }
 ?>
 
