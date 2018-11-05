@@ -38,7 +38,6 @@
 
 
             $Urgency = $_POST['Urgency'];
-            $Urgency = mysqli_real_escape_string($connect, $Urgency);
 
             $Location = $_POST['Location'];
             $Location = mysqli_real_escape_string($connect, $Location);
@@ -84,7 +83,6 @@
 
 
             $Urgency = $_POST['Urgency'];
-            $Urgency = mysqli_real_escape_string($connect, $Urgency);
 
             $Location = $_POST['Location'];
             $Location = mysqli_real_escape_string($connect, $Location);
@@ -125,7 +123,6 @@
 
 
             $Urgency = $_POST['Urgency'];
-            $Urgency = mysqli_real_escape_string($connect, $Urgency);
 
             $Location = $_POST['Location'];
             $Location = mysqli_real_escape_string($connect, $Location);
@@ -170,7 +167,6 @@
 
 
             $Urgency = $_POST['Urgency'];
-            $Urgency = mysqli_real_escape_string($connect, $Urgency);
 
             $Location = $_POST['Location'];
             $Location = mysqli_real_escape_string($connect, $Location);
