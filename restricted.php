@@ -15,9 +15,6 @@ if (!isset($_SESSION['Username'])) {
 } else if (!isset($_SESSION['Admin'])) {
     echo "<p>You will be redirected to your homepage in 5 seconds.</p>";
     echo "<meta http-equiv=\"refresh\" content=\"5;url=homepage.php\"/>";
-} else if (isset($_SESSION['Username'])) {
-    echo "<p>You are already logged in.</p><br><p>You will be redirected to your homepage in 5 seconds.</p>";
-    echo "<meta http-equiv=\"refresh\" content=\"5;url=homepage.php\"/>";
 }
 ?>
 
