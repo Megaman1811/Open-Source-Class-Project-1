@@ -232,7 +232,13 @@
 
         <form method="post">
     <p> Enter ID:<input type="text" name="ID" value="<?php echo $ID ?>"/></p>
-    <p> Enter Urgency:<input type="text" name="Urgency" value="<?php echo $Urgency ?>"/></p>
+    <p> Enter Urgency:<select id="Urgency" name="Urgency">
+            <option value="low"<?php if ($Urgency == "low"){echo "selected";} ?>>Low</option>
+            <option value="medium"<?php if ($Urgency == "medium"){echo "selected";} ?>>Medium</option>
+            <option value="high" <?php if ($Urgency == "high"){echo "selected";} ?>>High</option>
+            <option value="very high" <?php if ($Urgency == "very high"){echo "selected";} ?>>Very High</option>
+        </select>
+    </p>
     <p> Enter Location:<input type="text" name="Location" value="<?php echo $Location ?>"/></p>
     <p> Enter Description:<input type="text" name="Description" value="<?php echo $Description ?>"/></p>
     <p> Enter UserRec:<input type="text" name="UserRec" value="<?php echo $UserRec ?>"/></p>
