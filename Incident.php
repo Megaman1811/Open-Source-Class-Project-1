@@ -120,7 +120,7 @@ Logged in as: <?php echo $_SESSION['Username'];
         <br>
     </p>
     <p>
-        <input type="submit" value="Submit" onclick="location.href='homepage.php?added=1';" name="Submit"/>
+        <input type="submit" value="Submit" name="Submit"/>
     </p>
 
 </form>
