@@ -56,6 +56,7 @@ if (!empty($_POST['Category'])) {
         $Write = fopen('LOG.txt', 'a');
         fwrite($Write, $_SESSION['Username'] . " " . $Date . "\n");
         fclose($Write);
+        header('Location:homepage.php?submission=1');
         if (!$result1) {
             die('Invalid query: ' . mysqli_error($connect));
         }

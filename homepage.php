@@ -24,6 +24,7 @@
                 echo "<input type=\"button\" onclick=\"location.href='adminconsole.php';\" value=\"Admin Console\"/>";
             } //Checks if Admin. if you are, adds button to console?>
             <input type="button" onclick="location.href='logout.php';" value="Logout"/>
+            <?php if (isset($_GET['Submission']) == 1) echo "Submission Entered"; ?>
         </p>
 
     </form>
