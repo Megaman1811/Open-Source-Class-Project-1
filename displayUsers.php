@@ -12,7 +12,7 @@ Logged in as: <?php echo $_SESSION['Username'];
 <a href="homepage.php">Homepage</a>
 <?php if (isset($_SESSION['Admin'])) {
     echo "| <a href=\"adminconsole.php\">Admin Console</a>";
-} //Checks if Admin. if you are, adds link to console?> <br>
+} //Checks if Admin. if you are, adds link to console?> <br><br>
 
 <?php
 /**
@@ -109,7 +109,7 @@ if (isset($_POST['UPDATE'])) {
     $Name = mysqli_real_escape_string($connect, $Name);
 
     $Email = $_POST['Email'];
-    $Email = mysqli_real_escape_string($connect, $Email);
+    $Email = mysqli_real_escape_string($connect, $Email); //cannot change email as it is primary key
 
     $Pass = $_POST['Pass'];
     $Pass = mysqli_real_escape_string($connect, $Pass);
@@ -129,17 +129,17 @@ if (isset($_POST['UPDATE'])) {
         $row = mysqli_fetch_row($result);
 
 
-        if ($row[0] == $Email) {
+        //if ($row[0] == $Email) {
             $query = "Update user_info Set emp_id ='$ID' , name = '$Name' ,  username = '$User' ,
             password = '$Pass' , cellphone = '$Cell' , address = '$Address' ,
              Admin = $Admin where email = '$Email'";
             $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
-        } else {
-            $query = "Update user_info Set emp_id ='$ID' , name = '$Name' ,  username = '$User' ,
-            password = '$Pass' , cellphone = '$Cell'  address = '$Address' ,
-             Admin = '$Admin', email = '$Email' where name = '$Name'";
-            $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
-        }
+//        } else {
+//            $query = "Update user_info Set emp_id ='$ID' , name = '$Name' ,  username = '$User' ,
+//            password = '$Pass' , cellphone = '$Cell'  address = '$Address' ,
+//             Admin = '$Admin', email = '$Email' where name = '$Name'";
+//            $result = mysqli_query($connect, $query) or die("query is failed" . mysqli_error($connect));
+//        }
 
         if (mysqli_affected_rows($connect) > 0) {
             echo "Data updated";
@@ -293,7 +293,8 @@ echo "</table>";
 <form method="post">
     <p> Enter ID:<input type="text" name="ID" value="<?php echo $ID ?>"/></p>
     <p> Enter Name: <input type="text" name="Name" value="<?php echo $Name ?>"/></p>
-    <p> Enter Email:<input type="text" name="Email" value="<?php echo $Email ?>"/></p>
+    <p> Enter Email:<input type="text" name="Email" value="<?php echo $Email ?>"/> <b>You are unable to edit an email
+            once it is entered</b></p>
     <p> Enter User:<input type="text" name="User" value="<?php echo $User ?>"/></p>
     <p> Enter Pass:<input type="text" name="Pass" value="<?php echo $Pass ?>"/></p>
     <p> Enter Cell:<input type="text" name="Cell" value="<?php echo $Cell ?>"/></p>
